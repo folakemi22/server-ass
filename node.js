@@ -2,9 +2,9 @@ const express = require('express')
 
 const app = express()
 
-const PORT = 4000
+const PORT = 8080
 
-app.listen(4000)
+
 
 app.get('/', (req, res) =>{
     console.log('folake');
@@ -18,19 +18,23 @@ app.get('/about', (req, res) =>{
    res.sendFile('./views/about.html', { root: __dirname});
 })
 
-app.get('/contactme', (req, res) =>{
+app.get('/contact-me', (req, res) =>{
     console.log('olumoroti');
    // res.send("T.gmail.com")
-   res.sendFile('./views/cotactme.html', { root: __dirname});
+   res.sendFile('./views/contact-me.html', { root: __dirname});
 })
 
-app.get('/about-us', (req, res) =>{
+app.get('/contact', (req, res) =>{
     console.log('georhge');
    // res.send("Talo")
-   res.redirect('./about')
+   res.redirect('./contact-me')
 })
 
 
 app.use((req, res) => {
-    res.status('404').sendFile('./views/404.html', { root: __dirname});
+    res.sendFile('./views/404.html', { root: __dirname});
+})
+
+app.listen(PORT, () => {
+    console.log(`app is listening at this ${PORT}`)
 })
